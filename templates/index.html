@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Classification App</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; text-align: center; padding: 20px; }
+        h1 { color: #333; }
+        form { margin: 20px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        form input[type="file"] { margin: 10px 0; }
+        form button { background-color: #007bff; color: white; padding: 10px; border-radius: 5px; border: none; cursor: pointer; }
+        form button:hover { background-color: #0056b3; }
+        img { margin: 20px; max-width: 300px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        footer { margin-top: 30px; color: #555; }
+    </style>
+</head>
+<body>
+    <h1>Image Classification App</h1>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Upload and Predict</button>
+    </form>
+    {% if prediction %}
+        <h2>Prediction: {{ prediction }}</h2>
+        <h3>Confidence: {{ confidence }}%</h3>
+        <img src="{{ image_url }}" alt="Uploaded Image">
+    {% endif %}
+    <footer>&copy; 2024 Image Classifier App. All rights reserved.</footer>
+</body>
+</html>
